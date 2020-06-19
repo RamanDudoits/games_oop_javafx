@@ -57,6 +57,7 @@ public class Puzzle extends Application {
                     rect.setY(event.getY() - size / 2);
                 }
         );
+
         rect.setOnMouseReleased(
                 event -> {
                     if (logic.move(this.extract(momento.getX(), momento.getY()),

@@ -95,6 +95,7 @@ public class Logic {
         return result;
     }
 
+
     public static boolean monoVertical(int[][] table, int column) {
         boolean result = true;
         for (int index = 0; index < table.length; index++) {

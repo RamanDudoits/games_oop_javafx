@@ -73,20 +73,34 @@ public class Logic {
         boolean result = false;
         for (int index = 0; index < table.length; index++) {
             if (table[index][index] == 1) {
-                for (int i = 0; i < table.length; i++) {
-                    if (table[index][i] == 1){
-                        result = true;
-                    } else {
-                        for (int j = 0; j < table.length; j++){
-                            if (table[j][index]  == 1) {
-                                result = true;
-                            } else {
-                                result = false;
-                                break;
-                            }
-                        }
-                    }
+                if (monoHorizontal(table, index) || monoVertical(table, index)) {
+                    result = true;
+                    break;
                 }
+
+            }
+        }
+
+        return result;
+    }
+
+    public static boolean monoHorizontal(int[][] table, int row) {
+        boolean result = true;
+        for (int index = 0; index < table.length; index++) {
+            if (table[row][index] != 1) {
+                result = false;
+                break;
+            }
+        }
+        return result;
+    }
+
+    public static boolean monoVertical(int[][] table, int column) {
+        boolean result = true;
+        for (int index = 0; index < table.length; index++) {
+            if (table[index][column] != 1) {
+                result = false;
+                break;
             }
         }
         return result;

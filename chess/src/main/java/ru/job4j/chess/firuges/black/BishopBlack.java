@@ -25,19 +25,13 @@ public class BishopBlack implements Figure {
                     String.format("Could not move by diagonal from %s to %s", source, dest)
             );
         }
-        int deltaX;
-        int deltaY;
         int size = Math.abs(dest.getX() - source.getX());
         Cell[] steps = new Cell[size];
+        int deltaX = dest.getX() > source.getX() ? 1 : -1;
+        int deltaY = dest.getY() > source.getY() ? 1 : -1;
         for (int index = 0; index < size; index++) {
-            if (dest.getX() > source.getX()) {
-                deltaX = source.getX() + index + 1;
-            } else deltaX = source.getX() - index - 1;
-            if (dest.getY() > source.getY()) {
-                deltaY = source.getY() + index + 1;
-            } else deltaY = source.getY() - index - 1;
-            int x = deltaX;
-            int y = deltaY;
+            int x = deltaX * (index + 1) + source.getX();
+            int y = deltaY * (index + 1) + source.getY();
             steps[index] = Cell.findBy(x, y);
         }
         return steps;
@@ -45,10 +39,8 @@ public class BishopBlack implements Figure {
 
     public boolean isDiagonal(Cell source, Cell dest) {
         boolean rsl = false;
-        if (Math.abs(source.getX() - source.getY()) ==
-                Math.abs(dest.getX() - dest.getY()) ||
-        source.getX() + source.getY() ==
-                dest.getX() + dest.getY()) {
+        if (Math.abs(source.getX() - dest.getX()) ==
+                Math.abs(source.getY() - dest.getY())) {
             rsl = true;
         }
         return rsl;

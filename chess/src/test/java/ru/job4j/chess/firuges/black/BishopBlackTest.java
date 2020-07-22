@@ -27,11 +27,10 @@ public class BishopBlackTest  {
     public void whenWay() {
         BishopBlack bishop = new BishopBlack(Cell.C1);
         Cell[] cells = bishop.way(Cell.C1, Cell.G5);
-        Cell[] cells1 = {Cell.D2, Cell.E3, Cell.F4, Cell.G5};
-        assertThat(cells, is(cells1));
+        assertThat(cells, is(new Cell[] {Cell.D2, Cell.E3, Cell.F4, Cell.G5}));
     }
 
-    @Test
+    @Test(expected = IllegalStateException.class)
     public void whenIsDiagonal() {
         BishopBlack bishop = new BishopBlack(Cell.C1);
         assertThat(bishop.way(Cell.C1, Cell.E4), is(

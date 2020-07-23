@@ -33,8 +33,6 @@ public class BishopBlackTest  {
     @Test(expected = IllegalStateException.class)
     public void whenIsDiagonal() {
         BishopBlack bishop = new BishopBlack(Cell.C1);
-        assertThat(bishop.way(Cell.C1, Cell.E4), is(
-                String.format("Could not move by diagonal from  to ",
-                        Cell.C1, Cell.E4)));
+        bishop.way(Cell.C1, Cell.E4);
     }
 }
